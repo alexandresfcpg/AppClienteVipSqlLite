@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">App ClienteVip DB Layout</string>
+    <string name="txtTitulo">Aplicativo do Alexandre</string>
+    <string name="txtDataAtual">24/07/2024</string>
+    <string name="txtHoraAtual">18:13:00</string>
+    <string name="btnCadastro">CADASTRAR</string>
+    <string name="btnVoltar">VOLTAR</string>
+
+
+    <!-- tela de menus -->
+
+    <string name="btnMeusDados">MEUS DADOS</string>
+    <string name="btnAtualizarMeusDados">ATUALIZAR MEUS DADOS</string>
+    <string name="btnExcluirConta">EXCLUIR MINHA CONTA</string>
+    <string name="btnConsultarClientes">CONSULTAR CLIENTES VIP</string>
+    <string name="btnSair">SAIR DO APLICATIVO</string>
+
+
+    <!-- tela de exibição da lista de clientes -->
+
+    <string name="txtCliente">Cliente</string>
+
+
+    <!-- formulario de login -->
+
+    <string name="txtLogin">Login</string>
+    <string name="txtLembrar">Lembrar</string>
+    <string name="txtRecuperarSenha">Recuperar Senha</string>
+    <string name="btnAcessar">ACESSAR</string>
+    <string name="btnSejaVip">SEJA VIP</string>
+    <string name="txtVersaoApp">Versão V1.0</string>
+    <string name="txtLerPolitica"><![CDATA[Ler Política de Privacidade & Termos de Uso.]]></string>
+
+    <!-- formulario de login novo -->
+
+    <string name="txtHintEmailRecuperacao">Digite o e-mail cadastrado...</string>
+
+
+    <!-- tela de recuparação de senha -->
+
+    <string name="txtHintEmailCadastrado">Digite o e-mail cadastrado...</string>
+    <string name="btnRecuperar">RECUPERAR</string>
+
+
+    <!-- tela novo cliente VIP -->
+
+    <string name="txtNovoVip">Novo VIP</string>
+    <string name="txtPrimeiroNome">Primeiro Nome</string>
+    <string name="txtSobreNome">Sobrenome</string>
+    <string name="txtHintSobreNome">Digite seu sobrenome...</string>
+    <string name="txtPessoaFisica">Pessoa Física</string>
+    <string name="btnSalvarContinuar">SALVAR E CONTINUAR</string>
+    <string name="btnCancelar">CANCELAR</string>
+
+
+    <!-- tela novo cliente pessoa fisica -->
+
+    <string name="txtCpf">CPF</string>
+    <string name="txtHintCpf">Digite seu CPF</string>
+    <string name="txtNomeCompleto">Nome Completo</string>
+    <string name="txtHintNomeCompleto">Nome completo igual do CPF...</string>
+
+    <!-- tela novo cliente pessoa juridica -->
+
+    <string name="txtPessoaJuridica">Pessoa Jurídica</string>
+    <string name="txtCnpj">CNPJ</string>
+    <string name="txtHintCnpj">Digite seu CNPJ</string>
+    <string name="txtRazaoSocial">Razão Social</string>
+    <string name="txtHintRazaoSocial">Razão Social igual do cartão CNPJ</string>
+    <string name="txtDataAbertura">Data de Abertura da Empresa</string>
+    <string name="txtHintDataAbertura">dd/mm/aaaa</string>
+    <string name="txtSimplesNacional">Simples Nacional</string>
+    <string name="txtMei">MEI</string>
+    <string name="btnSalvarConcluir">SALVAR E CONCLUIR</string>
+
+
+    <!-- formulario de cadastro de usuarios -->
+
+    <string name="txtFinalizacaoCadastro">Credenciais de Acesso</string>
+    <string name="txtNome">Nome</string>
+    <string name="txtHintNome">Digite seu primeiro nome...</string>
+    <string name="txtEmail">E-mail</string>
+    <string name="txtHintEmail">Digite o seu melhor e-mail...</string>
+    <string name="txtSenhaA">Senha</string>
+    <string name="txtHintSenhaA">Informe uma senha...</string>
+    <string name="txtSenhaB">Repita a senha</string>
+    <string name="txtHintSenhaB">Confirme a senha digitada...</string>
+    <string name="txtTermo">Li e concordo com os termos de uso e política de privacidade.</string>
+
+    <!-- texto da tela de background gradiente -->
+    <string name="txtTituloBackground">Aplicando Efeito\nBackground Gradiente</string>
+
+
+</resources>
