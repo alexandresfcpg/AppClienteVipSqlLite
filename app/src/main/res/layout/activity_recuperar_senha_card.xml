@@ -129,7 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/btnRecuperar"
-                android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse" />
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large" />
 
             <Button
                 android:id="@+id/btnVoltar"
@@ -138,7 +139,8 @@
                 android:layout_marginTop="5dp"
                 android:onClick="voltaClienteVip"
                 android:text="@string/btnVoltar"
-                android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse" />
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -17,11 +17,13 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 
 import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
+import app.daazi.aluno.appclientevipsqllite.controller.ClienteController;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 
 public class ClienteVipActivity extends AppCompatActivity {
 
     Cliente novoVip;
+    ClienteController controller;
     private SharedPreferences preferences;
 
     EditText editPrimeiroNome, editSobrenome;
@@ -48,6 +50,8 @@ public class ClienteVipActivity extends AppCompatActivity {
                     novoVip.setPessoaFisica(isPessoaFisica);
 
                     salvarSharedPreferences();
+
+                    controller.incluir(novoVip);
 
                     Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaFisicaActivity.class);
                     startActivity(intent);
@@ -92,6 +96,7 @@ public class ClienteVipActivity extends AppCompatActivity {
         isFormularioOK = false;
 
         novoVip = new Cliente();
+        controller = new ClienteController(this);
 
         restaurarSharedPreferences();
     }

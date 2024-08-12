@@ -180,7 +180,8 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginRight="16dp"
                 android:text="@string/btnSalvarContinuar"
-                android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large"
                 android:textColor="@color/primaryTextColor" />
 
 
@@ -211,7 +212,8 @@
                 android:layout_marginTop="4dp"
                 android:onClick="voltaClienteVip"
                 android:text="@string/btnVoltar"
-                android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse" />
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large" />
 
             <Button
                 android:id="@+id/btnCancelar"
@@ -219,7 +221,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/btnCancelar"
-                android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse" />
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

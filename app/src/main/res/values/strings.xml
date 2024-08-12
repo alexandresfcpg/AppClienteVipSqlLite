@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App ClienteVip DB Layout</string>
+    <string name="app_name">App ClienteVip SqllIte</string>
     <string name="txtTitulo">Aplicativo do Alexandre</string>
     <string name="txtDataAtual">24/07/2024</string>
     <string name="txtHoraAtual">18:13:00</string>
