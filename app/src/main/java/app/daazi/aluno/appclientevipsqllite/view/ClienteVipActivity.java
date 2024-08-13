@@ -32,6 +32,8 @@ public class ClienteVipActivity extends AppCompatActivity {
 
     boolean isFormularioOK, isPessoaFisica;
 
+    int ultimoID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +51,11 @@ public class ClienteVipActivity extends AppCompatActivity {
                     novoVip.setSobreNome(editSobrenome.getText().toString());
                     novoVip.setPessoaFisica(isPessoaFisica);
 
-                    salvarSharedPreferences();
-
                     controller.incluir(novoVip);
+
+                    ultimoID = controller.getUltimoID();
+
+                    salvarSharedPreferences();
 
                     Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaFisicaActivity.class);
                     startActivity(intent);
@@ -134,6 +138,7 @@ public class ClienteVipActivity extends AppCompatActivity {
         dados.putString("primeiroNome", novoVip.getPrimeiroNome());
         dados.putString("sobreNome", novoVip.getSobreNome());
         dados.putBoolean("pessoaFisica", novoVip.isPessoaFisica());
+        dados.putInt("ultimoID", ultimoID);
         dados.apply();
 
     }
