@@ -56,7 +56,7 @@ public class ClienteController extends AppDataBase {
 
     public List<Cliente> listar() {
 
-        return list(TABELA);
+        return listClientes(TABELA);
     }
 
     public int getUltimoID(){

@@ -16,6 +16,7 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 
 import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
+import app.daazi.aluno.appclientevipsqllite.controller.ClientePFController;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePF;
 
@@ -23,6 +24,7 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
     Cliente novoVip;
     ClientePF novoClientePF;
+    ClientePFController controller;
 
     private SharedPreferences preferences;
 
@@ -30,6 +32,9 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
     Button btnSalvarContinuar, btnVoltar, btnCancelar;
 
     boolean isFormularioOK, isPessoaFisica;
+
+    int clienteID;
+    int ultimoIDClientePF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,11 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
                     novoClientePF.setCpf(editCpf.getText().toString());
                     novoClientePF.setNomeCompleto(editNomeCompleto.getText().toString());
+                    novoClientePF.setClienteID(clienteID);
+
+                    controller.incluir(novoClientePF);
+
+                    ultimoIDClientePF = controller.getUltimoID();
 
                     salvarSharedPreferences();
 
@@ -105,8 +115,8 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
         btnCancelar = findViewById(R.id.btnCancelar);
 
         novoClientePF = new ClientePF();
-
         novoVip = new Cliente();
+        controller = new ClientePFController(this);
 
         restaurarSharedPreferences();
     }
@@ -137,6 +147,7 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
         dados.putString("cpf", editCpf.getText().toString());
         dados.putString("nomeCompleto", editNomeCompleto.getText().toString());
+        dados.putInt("ultimoIDClientePF", ultimoIDClientePF);
         dados.apply();
     }
 
@@ -144,6 +155,7 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
         isPessoaFisica = preferences.getBoolean("pessoaFisica", true);
+        clienteID = preferences.getInt("ultimoID", -1);
 
     }
 }

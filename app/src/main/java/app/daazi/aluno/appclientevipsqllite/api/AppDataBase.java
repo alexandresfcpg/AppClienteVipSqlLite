@@ -18,6 +18,7 @@ import app.daazi.aluno.appclientevipsqllite.datamodel.ClienteDataModel;
 import app.daazi.aluno.appclientevipsqllite.datamodel.ClientePFDataModel;
 import app.daazi.aluno.appclientevipsqllite.datamodel.ClientePJDataModel;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
+import app.daazi.aluno.appclientevipsqllite.model.ClientePF;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
@@ -130,7 +131,7 @@ public class AppDataBase extends SQLiteOpenHelper {
     }
 
     @SuppressLint("Range")
-    public List<Cliente> list(String tabela) {
+    public List<Cliente> listClientes(String tabela) {
 
         List<Cliente> list = new ArrayList<>();
 
@@ -159,11 +160,50 @@ public class AppDataBase extends SQLiteOpenHelper {
 
                 } while (cursor.moveToNext());
 
-                Log.i(AppUtil.LOG_APP, tabela + " lista gerada com sucesso.");
+                Log.i(AppUtil.LOG_APP, tabela + " listClientesa gerada com sucesso.");
             }
 
         } catch (SQLException e) {
-            Log.e(AppUtil.LOG_APP, "Erro ao listar os dados: " + tabela);
+            Log.e(AppUtil.LOG_APP, "Erro ao listClientesar os dados: " + tabela);
+            Log.e(AppUtil.LOG_APP, "Erro: " + e.getMessage());
+        }
+
+        return list;
+    }
+
+    @SuppressLint("Range")
+    public List<ClientePF> listClientesPessoaFisica(String tabela) {
+
+        List<ClientePF> list = new ArrayList<>();
+
+        ClientePF clientePF;
+
+        String sql = "SELECT * FROM " + tabela;
+
+        try {
+
+            cursor = db.rawQuery(sql, null);
+
+            if (cursor.moveToFirst()) {
+
+                do {
+
+                    clientePF = new ClientePF();
+
+                    clientePF.setId(cursor.getInt(cursor.getColumnIndex(ClientePFDataModel.ID)));
+                    clientePF.setClienteID(cursor.getInt(cursor.getColumnIndex(ClientePFDataModel.FK)));
+                    clientePF.setNomeCompleto(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.NOME_COMPLETO)));
+                    clientePF.setCpf(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.CPF)));
+
+                    list.add(clientePF);
+
+                } while (cursor.moveToNext());
+
+                Log.i(AppUtil.LOG_APP, tabela + " listClientesa gerada com sucesso.");
+            }
+
+        } catch (SQLException e) {
+            Log.e(AppUtil.LOG_APP, "Erro ao listClientesar os dados: " + tabela);
             Log.e(AppUtil.LOG_APP, "Erro: " + e.getMessage());
         }
 
