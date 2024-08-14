@@ -19,6 +19,7 @@ import app.daazi.aluno.appclientevipsqllite.datamodel.ClientePFDataModel;
 import app.daazi.aluno.appclientevipsqllite.datamodel.ClientePJDataModel;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePF;
+import app.daazi.aluno.appclientevipsqllite.model.ClientePJ;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
@@ -160,11 +161,11 @@ public class AppDataBase extends SQLiteOpenHelper {
 
                 } while (cursor.moveToNext());
 
-                Log.i(AppUtil.LOG_APP, tabela + " listClientesa gerada com sucesso.");
+                Log.i(AppUtil.LOG_APP, tabela + " lista gerada com sucesso.");
             }
 
         } catch (SQLException e) {
-            Log.e(AppUtil.LOG_APP, "Erro ao listClientesar os dados: " + tabela);
+            Log.e(AppUtil.LOG_APP, "Erro ao listar os dados: " + tabela);
             Log.e(AppUtil.LOG_APP, "Erro: " + e.getMessage());
         }
 
@@ -199,11 +200,53 @@ public class AppDataBase extends SQLiteOpenHelper {
 
                 } while (cursor.moveToNext());
 
-                Log.i(AppUtil.LOG_APP, tabela + " listClientesa gerada com sucesso.");
+                Log.i(AppUtil.LOG_APP, tabela + " lista gerada com sucesso.");
             }
 
         } catch (SQLException e) {
-            Log.e(AppUtil.LOG_APP, "Erro ao listClientesar os dados: " + tabela);
+            Log.e(AppUtil.LOG_APP, "Erro ao listar os dados: " + tabela);
+            Log.e(AppUtil.LOG_APP, "Erro: " + e.getMessage());
+        }
+
+        return list;
+    }
+
+    @SuppressLint("Range")
+    public List<ClientePJ> listClientesPessoaJuridica(String tabela) {
+
+        List<ClientePJ> list = new ArrayList<>();
+
+        ClientePJ clientePJ;
+
+        String sql = "SELECT * FROM " + tabela;
+
+        try {
+
+            cursor = db.rawQuery(sql, null);
+
+            if (cursor.moveToFirst()) {
+
+                do {
+
+                    clientePJ = new ClientePJ();
+
+                    clientePJ.setId(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.ID)));
+                    clientePJ.setClientePFID(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.FK)));
+                    clientePJ.setCnpj(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.CNPJ)));
+                    clientePJ.setRazaoSocial(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.RAZAO_SOCIAL)));
+                    clientePJ.setDataAbertura(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.DATA_ABERTURA)));
+                    clientePJ.setSimplesNacional(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.SIMPLES_NACIONAL)) == 1);
+                    clientePJ.setMei(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.MEI)) == 1);
+
+                    list.add(clientePJ);
+
+                } while (cursor.moveToNext());
+
+                Log.i(AppUtil.LOG_APP, tabela + " lista gerada com sucesso.");
+            }
+
+        } catch (SQLException e) {
+            Log.e(AppUtil.LOG_APP, "Erro ao listar os dados: " + tabela);
             Log.e(AppUtil.LOG_APP, "Erro: " + e.getMessage());
         }
 

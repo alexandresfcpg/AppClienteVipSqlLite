@@ -2,12 +2,31 @@ package app.daazi.aluno.appclientevipsqllite.model;
 
 public class ClientePJ extends ClientePF{
 
-    private int fk;
+    private int id;
+    private int clientePFID;
     private String cnpj;
     private String razaoSocial;
     private String dataAbertura;
     private boolean simplesNacional;
     private boolean mei;
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getClientePFID() {
+        return clientePFID;
+    }
+
+    public void setClientePFID(int clientePFID) {
+        this.clientePFID = clientePFID;
+    }
 
     public String getCnpj() {
         return cnpj;

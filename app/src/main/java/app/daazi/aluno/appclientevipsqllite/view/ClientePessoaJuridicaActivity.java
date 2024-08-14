@@ -17,6 +17,7 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 
 import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
+import app.daazi.aluno.appclientevipsqllite.controller.ClientePJController;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePJ;
 
@@ -24,6 +25,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
 
     Cliente novoVip;
     ClientePJ novoClientePJ;
+    ClientePJController controller;
 
     private SharedPreferences preferences;
 
@@ -33,7 +35,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
 
     boolean isFormularioOK, isSimplesNacional, isMei;
 
-
+    int ultimoIDClientePF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,14 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
 
                 if (isFormularioOK = validarFormulario()) {
 
+                    novoClientePJ.setClientePFID(ultimoIDClientePF);
                     novoClientePJ.setCnpj(editCnpj.getText().toString());
                     novoClientePJ.setRazaoSocial(editRazaoSocial.getText().toString());
                     novoClientePJ.setDataAbertura(editDataAbertura.getText().toString());
                     novoClientePJ.setSimplesNacional(isSimplesNacional);
                     novoClientePJ.setMei(isMei);
+
+                    controller.incluir(novoClientePJ);
 
                     salvarSharedPreferences();
 
@@ -120,8 +125,8 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
         btnCancelar = findViewById(R.id.btnCancelar);
 
         novoClientePJ = new ClientePJ();
-
         novoVip = new Cliente();
+        controller = new ClientePJController(this);
 
         restaurarSharedPreferences();
     }
@@ -161,6 +166,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
         dados.putString("dataAbertura", editDataAbertura.getText().toString());
         dados.putBoolean("simplesNacional", isSimplesNacional);
         dados.putBoolean("mei", isMei);
+        dados.putInt("ultimoIDClientePF", ultimoIDClientePF);
         dados.apply();
 
     }

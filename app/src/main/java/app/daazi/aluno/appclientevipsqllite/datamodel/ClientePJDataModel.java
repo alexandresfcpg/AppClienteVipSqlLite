@@ -14,14 +14,14 @@ public class ClientePJDataModel {
      *     private boolean mei;
      */
 
-    private static final String TABELA = "clientePJ";
-    private static final String ID = "id";
-    private static final String FK = "clientePFID";
-    private static final String CNPJ = "cnpj";
-    private static final String RAZAO_SOCIAL = "razaoSocial";
-    private static final String DATA_ABERTURA = "dataAbertura";
-    private static final String SIMPLES_NACIONAL = "simplesNacional";
-    private static final String MEI = "mei";
+    public static final String TABELA = "clientePJ";
+    public static final String ID = "id";
+    public static final String FK = "clientePFID";
+    public static final String CNPJ = "cnpj";
+    public static final String RAZAO_SOCIAL = "razaoSocial";
+    public static final String DATA_ABERTURA = "dataAbertura";
+    public static final String SIMPLES_NACIONAL = "simplesNacional";
+    public static final String MEI = "mei";
     private static final String DATA_INC = "datainc";
     private static final String DATA_ALT = "dataalt";
 
@@ -55,8 +55,8 @@ public class ClientePJDataModel {
         query += DATA_ABERTURA+" TEXT, ";
         query += SIMPLES_NACIONAL+" INTEGER, ";
         query += MEI+" INTEGER, ";
-        query += DATA_INC+" TEXT, ";
-        query += DATA_ALT+" TEXT, ";
+        query += DATA_INC+" datetime default current_timestamp, ";
+        query += DATA_ALT+" datetime default current_timestamp, ";
         query += "FOREIGN KEY("+FK+") REFERENCES clientePF(id) ";
         query += " )";
 
