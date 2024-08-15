@@ -174,6 +174,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
     private void restaurarSharedPreferences() {
 
         preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
+        ultimoIDClientePF = preferences.getInt("ultimoIDClientePF" ,-1);
 
     }
 

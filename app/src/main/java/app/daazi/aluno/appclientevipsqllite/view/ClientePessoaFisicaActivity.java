@@ -49,9 +49,9 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
                 if (isFormularioOK = validarFormulario()) {
 
+                    novoClientePF.setClienteID(clienteID);
                     novoClientePF.setCpf(editCpf.getText().toString());
                     novoClientePF.setNomeCompleto(editNomeCompleto.getText().toString());
-                    novoClientePF.setClienteID(clienteID);
 
                     controller.incluir(novoClientePF);
 

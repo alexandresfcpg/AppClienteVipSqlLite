@@ -16,7 +16,7 @@ import app.daazi.aluno.appclientevipsqllite.model.ClientePJ;
 
 public class ClientePJController extends AppDataBase {
 
-    private static final String TABELA = ClientePFDataModel.TABELA;
+    private static final String TABELA = ClientePJDataModel.TABELA;
     private ContentValues dados;
 
 
