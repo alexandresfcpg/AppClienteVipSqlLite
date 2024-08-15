@@ -135,10 +135,22 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
 
         boolean retorno = true;
 
-        if (TextUtils.isEmpty(editCnpj.getText().toString())) {
+        String cnpj = editCnpj.getText().toString();
+
+        if (TextUtils.isEmpty(cnpj)) {
             editCnpj.setError("*");
             editCnpj.requestFocus();
             retorno = false;
+        }
+
+        if (!AppUtil.isCNPJ(cnpj)) {
+            editCnpj.setError("*");
+            editCnpj.requestFocus();
+            retorno = false;
+
+            Toast.makeText(this, "CNPJ inválido, tente novamente...", Toast.LENGTH_LONG).show();
+        }else{
+            //editCnpj.setText(AppUtil.mascaraCNPJ(editCnpj.getText().toString()));
         }
 
         if (TextUtils.isEmpty(editRazaoSocial.getText().toString())) {

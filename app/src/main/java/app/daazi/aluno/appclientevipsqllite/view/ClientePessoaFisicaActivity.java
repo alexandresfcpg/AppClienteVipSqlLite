@@ -125,10 +125,22 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
         boolean retorno = true;
 
-        if (TextUtils.isEmpty(editCpf.getText().toString())) {
+        String cpf = editCpf.getText().toString();
+
+        if (TextUtils.isEmpty(cpf)) {
             editCpf.setError("*");
             editCpf.requestFocus();
             retorno = false;
+        }
+
+        if (!AppUtil.isCPF(cpf)) {
+            editCpf.setError("*");
+            editCpf.requestFocus();
+            retorno = false;
+
+            Toast.makeText(this, "CPF inválido, tente novamente...", Toast.LENGTH_LONG).show();
+        }else{
+            editCpf.setText(AppUtil.mascaraCPF(editCpf.getText().toString()));
         }
 
         if (TextUtils.isEmpty(editNomeCompleto.getText().toString())) {
