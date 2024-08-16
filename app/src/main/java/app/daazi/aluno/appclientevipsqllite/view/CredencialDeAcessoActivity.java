@@ -17,6 +17,8 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 
 import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
+import app.daazi.aluno.appclientevipsqllite.controller.ClienteController;
+import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 
 public class CredencialDeAcessoActivity extends AppCompatActivity {
 
@@ -25,6 +27,10 @@ public class CredencialDeAcessoActivity extends AppCompatActivity {
     EditText editNome, editEmail, editSenhaA, editSenhaB;
     CheckBox ckTermo;
     boolean isFormularioOK, isPessoaFisica;
+
+    Cliente cliente;
+    ClienteController controller;
+    int clienteID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +89,11 @@ public class CredencialDeAcessoActivity extends AppCompatActivity {
                             .show();
                 } else {
 
+                    cliente.setEmail(editEmail.getText().toString());
+                    cliente.setSenha(editSenhaA.getText().toString());
+
+                    controller.alterar(cliente);
+
                     salvarSharedPreferences();
 
                     Intent iMenuPrincipal = new Intent(CredencialDeAcessoActivity.this, LoginActivity.class);
@@ -124,13 +135,25 @@ public class CredencialDeAcessoActivity extends AppCompatActivity {
 
         isFormularioOK = false;
 
+        cliente = new Cliente();
+        controller = new ClienteController(this);
+
         restaurarSharedPreferences();
     }
 
     private void restaurarSharedPreferences() {
 
         preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
+
+        clienteID = preferences.getInt("clienteID", -1);
+        String primeiroNome = preferences.getString("primeiroNome", "");
+        String sobreNome = preferences.getString("sobreNome", "");
         isPessoaFisica = preferences.getBoolean("pessoaFisica", true);
+
+        cliente.setId(clienteID);
+        cliente.setPrimeiroNome(primeiroNome);
+        cliente.setSobreNome(sobreNome);
+        cliente.setPessoaFisica(isPessoaFisica);
 
         if (isPessoaFisica)
             editNome.setText(preferences.getString("nomeCompleto", "Verifique os dados!"));
