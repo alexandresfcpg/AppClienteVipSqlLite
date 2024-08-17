@@ -1,5 +1,6 @@
 package app.daazi.aluno.appclientevipsqllite.api;
 
+import java.util.Calendar;
 import java.util.InputMismatchException;
 
 public class AppUtil {
@@ -10,6 +11,84 @@ public class AppUtil {
 
     public static final String URL_IMG_BACKGROUND = "https://www.marcomaddo.com.br/aluno/daazi/img/app-cliente-vip-login-bg.jpg";
     public static final String URL_IMG_LOGO = "https://www.marcomaddo.com.br/aluno/daazi/img/app-cliente-vip-logo.png";
+
+    /**
+     * @return devolve a data atual
+     */
+    public static String getDataAtual() {
+
+        String dia, mes, ano;
+
+        String dataAtual = "00/00/0000";
+
+        try {
+
+            Calendar calendar = Calendar.getInstance();
+
+            dia = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+            mes = String.valueOf(calendar.get(Calendar.MONTH) + 1);
+            ano = String.valueOf(calendar.get(Calendar.YEAR));
+
+            // p1 : p2 : p2
+
+            dia = (Calendar.DAY_OF_MONTH < 10) ? "0" + dia : dia;
+
+            dia = (dia.length() > 2) ? dia.substring(1, 3) : dia;
+
+            int mesAtual = (Calendar.MONTH) + 1;
+
+            mes = (mesAtual <= 9) ? "0" + mes : mes;
+
+            mes = (mes.length() > 2) ? mes.substring(1, 3) : mes;
+
+            dataAtual = dia + "/" + mes + "/" + ano;
+
+            return dataAtual;
+
+
+        } catch (Exception e) {
+
+
+        }
+
+        return dataAtual;
+
+    }
+
+    /**
+     * @return devolve a hora atual
+     */
+    public static String getHoraAtual() {
+
+        String horaAtual = "00:00:00";
+
+        String hora, minuto, segudo;
+
+        try {
+
+            Calendar calendar = Calendar.getInstance();
+
+            int iHora = calendar.get(Calendar.HOUR_OF_DAY);
+            int iMinuto = calendar.get(Calendar.MINUTE);
+            int iSegundo = calendar.get(Calendar.SECOND);
+
+
+            hora = (iHora <= 9) ? "0" + iHora : Integer.toString(iHora);
+            minuto = (iMinuto <= 9) ? "0" + iMinuto : Integer.toString(iMinuto);
+            segudo = (iSegundo <= 9) ? "0" + iSegundo : Integer.toString(iSegundo);
+
+            horaAtual = hora + ":" + minuto + ":" + segudo;
+
+            return horaAtual;
+
+
+        } catch (Exception e) {
+
+        }
+
+        return horaAtual;
+
+    }
 
     public static boolean isCPF(String CPF) {
 
