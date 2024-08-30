@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AppClienteVipSqlLite"
         tools:targetApi="31">
         <activity
+            android:name=".view.MeusDadosActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.ModeloActivity"
             android:exported="false" />
         <activity

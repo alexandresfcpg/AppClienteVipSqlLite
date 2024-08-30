@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         controller = new ClienteController(this);
 
         controller.getClienteByID(cliente);
-
-        cliente.getClientePF();
 
         initFormulario();
 
@@ -119,41 +118,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void meusDados(View view) {
 
-        /**
-         * <boolean name="pessoaFisica" value="false" />
-         *     <string name="emailCliente">alexandresfcpg@yahoo.com.br</string>
-         *     <string name="primeiroNome">Alexandre</string>
-         *     <boolean name="simplesNacional" value="true" />
-         *     <boolean name="loginAutomatico" value="true" />
-         *     <string name="cnpj">11222333000155</string>
-         *     <string name="sobreNome">Augusto</string>
-         *     <string name="dataAbertura">01/08/2024</string>
-         *     <boolean name="mei" value="false" />
-         *     <string name="senha">12345</string>
-         *     <string name="cpf">28772021861</string>
-         *     <string name="razaoSocial">Alex ME</string>
-         *     <string name="email">alexandresfcpg@yahoo.com.br</string>
-         *     <string name="nomeCompleto">Alexandre Augusto da Silva Henriques Ribeiro </string>
-         */
+        Intent intent = new Intent(MainActivity.this, MeusDadosActivity.class);
+        startActivity(intent);
 
-        Log.i(AppUtil.LOG_APP, "*** DADOS CLIENTE ***");
-        Log.i(AppUtil.LOG_APP, "ID: " + cliente.getId());
-        Log.i(AppUtil.LOG_APP, "Primeiro nome: " + cliente.getPrimeiroNome());
-        Log.i(AppUtil.LOG_APP, "Sobrenome: " + cliente.getSobreNome());
-        Log.i(AppUtil.LOG_APP, "E-mail: " + cliente.getEmail());
-        Log.i(AppUtil.LOG_APP, "Senha: " + cliente.getSenha());
-        Log.i(AppUtil.LOG_APP, "*** DADOS CLIENTE PF ***");
-        Log.i(AppUtil.LOG_APP, "CPF: " + clientePF.getCpf());
-        Log.i(AppUtil.LOG_APP, "Nome completo: " + clientePF.getNomeCompleto());
-
-        if (!cliente.isPessoaFisica()) {
-            Log.i(AppUtil.LOG_APP, "*** DADOS CLIENTE PJ ***");
-            Log.i(AppUtil.LOG_APP, "CNPJ: " + clientePJ.getCnpj());
-            Log.i(AppUtil.LOG_APP, "Razão Social: " + clientePJ.getRazaoSocial());
-            Log.i(AppUtil.LOG_APP, "Data de abertura: " + clientePJ.getDataAbertura());
-            Log.i(AppUtil.LOG_APP, "Simples Nacional: " + clientePJ.isSimplesNacional());
-            Log.i(AppUtil.LOG_APP, "MEI: " + clientePJ.isMei());
-        }
     }
 
     public void atualizarMeusDados(View view) {
