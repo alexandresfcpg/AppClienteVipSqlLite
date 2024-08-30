@@ -174,6 +174,7 @@ public class AppUtil {
                 // por exemplo, transforma o caractere "0" no inteiro 0
                 // (48 eh a posicao de "0" na tabela ASCII)
                 num = (int) (CNPJ.charAt(i) - 48);
+                sm = sm + (num * peso);
                 peso = peso + 1;
                 if (peso == 10)
                     peso = 2;

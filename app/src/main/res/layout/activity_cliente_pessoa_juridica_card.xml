@@ -180,9 +180,9 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginRight="16dp"
                 android:text="@string/btnSalvarContinuar"
-                android:textStyle="bold"
                 android:textAppearance="@android:style/TextAppearance.Holo.Large"
-                android:textColor="@color/primaryTextColor" />
+                android:textColor="@color/primaryTextColor"
+                android:textStyle="bold" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

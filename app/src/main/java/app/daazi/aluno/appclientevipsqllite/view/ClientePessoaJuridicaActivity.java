@@ -150,7 +150,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
 
             Toast.makeText(this, "CNPJ inválido, tente novamente...", Toast.LENGTH_LONG).show();
         }else{
-            //editCnpj.setText(AppUtil.mascaraCNPJ(editCnpj.getText().toString()));
+            editCnpj.setText(AppUtil.mascaraCNPJ(editCnpj.getText().toString()));
         }
 
         if (TextUtils.isEmpty(editRazaoSocial.getText().toString())) {
