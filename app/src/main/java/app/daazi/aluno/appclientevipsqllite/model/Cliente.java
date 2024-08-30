@@ -9,6 +9,9 @@ public class Cliente {
     private String senha;
     private boolean pessoaFisica;
 
+    private ClientePF clientePF;
+    private ClientePJ clientePJ;
+
     public int getId() {
         return id;
     }
@@ -55,5 +58,21 @@ public class Cliente {
 
     public void setPessoaFisica(boolean pessoaFisica) {
         this.pessoaFisica = pessoaFisica;
+    }
+
+    public ClientePF getClientePF() {
+        return clientePF;
+    }
+
+    public void setClientePF(ClientePF clientePF) {
+        this.clientePF = clientePF;
+    }
+
+    public ClientePJ getClientePJ() {
+        return clientePJ;
+    }
+
+    public void setClientePJ(ClientePJ clientePJ) {
+        this.clientePJ = clientePJ;
     }
 }

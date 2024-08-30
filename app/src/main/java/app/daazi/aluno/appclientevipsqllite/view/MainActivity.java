@@ -21,6 +21,7 @@ import java.util.List;
 
 import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
+import app.daazi.aluno.appclientevipsqllite.controller.ClienteController;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePF;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePJ;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Cliente cliente;
     ClientePF clientePF;
     ClientePJ clientePJ;
+    ClienteController controller;
 
     TextView txtNomeCliente;
 
@@ -41,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        controller = new ClienteController(this);
+
+        controller.getClienteByID(cliente);
+
+        cliente.getClientePF();
 
         initFormulario();
 

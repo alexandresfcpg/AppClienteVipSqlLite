@@ -64,4 +64,10 @@ public class ClienteController extends AppDataBase {
         return getLastPK(TABELA);
     }
 
+    public void getClienteByID(Cliente obj){
+
+        getClienteByID(ClienteDataModel.TABELA, obj);
+
+    }
+
 }
