@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.MeusDadosActivity">
-    
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -58,10 +58,10 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/txtNovoVip"
+                                android:id="@+id/txtMeusDados"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/txtNovoVip"
+                                android:text="@string/txtMeusDados"
                                 android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
                                 android:textColor="@color/primaryTextColor"
                                 android:textSize="20sp"
@@ -110,6 +110,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintNome"
                         android:inputType="text" />
 
@@ -131,6 +132,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintSobreNome"
                         android:inputType="text" />
 
@@ -141,6 +143,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
+                        android:enabled="false"
                         android:text="@string/txtPessoaFisica"
                         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
                         android:textStyle="bold" />
@@ -183,6 +186,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintCpf"
                         android:inputType="text" />
 
@@ -204,6 +208,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintNomeCompleto"
                         android:inputType="text" />
 
@@ -245,6 +250,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintCnpj"
                         android:inputType="text" />
 
@@ -266,6 +272,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintRazaoSocial"
                         android:inputType="text" />
 
@@ -287,6 +294,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintDataAbertura"
                         android:inputType="date" />
 
@@ -297,6 +305,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="16dp"
+                        android:enabled="false"
                         android:text="@string/txtSimplesNacional"
                         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
                         android:textColor="@color/primaryTextColor"
@@ -309,6 +318,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginRight="16dp"
+                        android:enabled="false"
                         android:text="@string/txtMei"
                         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
                         android:textColor="@color/primaryTextColor"
@@ -324,8 +334,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="8dp">
@@ -354,6 +364,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintEmail"
                         android:inputType="textEmailAddress" />
 
@@ -374,6 +385,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:enabled="false"
                         android:hint="@string/txtHintSenhaA"
                         android:inputType="numberPassword" />
 
@@ -388,8 +400,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="8dp">
@@ -410,8 +422,9 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:text="@string/btnVoltar"
-                        android:textStyle="bold"
-                        android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+                        android:onClick="voltar"
+                        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+                        android:textStyle="bold" />
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -45,6 +45,7 @@
     <!-- tela novo cliente VIP -->
 
     <string name="txtNovoVip">Novo VIP</string>
+    <string name="txtMeusDados">Meus Dados</string>
     <string name="txtPrimeiroNome">Primeiro Nome</string>
     <string name="txtSobreNome">Sobrenome</string>
     <string name="txtHintSobreNome">Digite seu sobrenome...</string>
