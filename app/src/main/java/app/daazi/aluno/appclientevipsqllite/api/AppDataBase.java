@@ -281,9 +281,35 @@ public class AppDataBase extends SQLiteOpenHelper {
         return -1;
     }
 
-    public void getClienteByID(String tabela, Cliente obj){
+    @SuppressLint("Range")
+    public Cliente getClienteByID(String tabela, Cliente obj){
 
+        Cliente cliente = new Cliente();
 
+        String sql = "SELECT * FROM "+tabela+"WHERE id = "+obj.getId();
+
+        try {
+
+            cursor = db.rawQuery(sql, null);
+
+            if (cursor.moveToNext()){
+
+                cliente.setPrimeiroNome(cursor.getString(cursor.getColumnIndex(ClienteDataModel.PRIMEIRO_NOME)));
+                cliente.setSobreNome(cursor.getString(cursor.getColumnIndex(ClienteDataModel.SOBRENOME)));
+                cliente.setEmail(cursor.getString(cursor.getColumnIndex(ClienteDataModel.EMAIL)));
+                cliente.setSenha(cursor.getString(cursor.getColumnIndex(ClienteDataModel.SENHA)));
+                cliente.setPessoaFisica(cursor.getInt(cursor.getColumnIndex(ClienteDataModel.PESSOA_FISICA)) == 1);
+
+            }
+
+        }catch (SQLException e){
+
+            Log.e(AppUtil.LOG_APP, "Erro getClienteByID "+obj.getId());
+            Log.e(AppUtil.LOG_APP, "Erro "+e.getMessage());
+
+        }
+
+        return cliente;
 
     }
 }

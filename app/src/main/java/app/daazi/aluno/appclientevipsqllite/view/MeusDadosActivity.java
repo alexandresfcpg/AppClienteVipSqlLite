@@ -62,24 +62,31 @@ public class MeusDadosActivity extends AppCompatActivity {
 
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobrenome = findViewById(R.id.editSobrenome);
+        ckPessoaFisica = findViewById(R.id.ckPessoaFisica);
+
         editCpf = findViewById(R.id.editCpf);
         editNomeCompleto = findViewById(R.id.editNomeCompleto);
+
         editCnpj = findViewById(R.id.editCnpj);
         editRazaoSocial = findViewById(R.id.editRazaoSocial);
         editDataAbertura = findViewById(R.id.editDataAbertura);
-        editEmail = findViewById(R.id.editEmail);
-        editSenhaA = findViewById(R.id.editSenhaA);
-        ckPessoaFisica = findViewById(R.id.ckPessoaFisica);
         ckSimplesNacional = findViewById(R.id.ckSimplesNacional);
         ckMei = findViewById(R.id.ckMei);
 
+        editEmail = findViewById(R.id.editEmail);
+        editSenhaA = findViewById(R.id.editSenhaA);
+
         cliente = new Cliente();
+        cliente.setId(clienteID);
+
         controller = new ClienteController(this);
     }
 
     private void popularFormulario() {
 
         if (clienteID>=1){
+
+            cliente = controller.getClienteByID(cliente);
 
         }else{
 
