@@ -61,4 +61,10 @@ public class ClientePFController extends AppDataBase {
         return getLastPK(TABELA);
     }
 
+    public ClientePF getClientePFByFK (int idFK){
+
+        return getClientePFByFK(ClientePFDataModel.TABELA, idFK);
+
+    }
+
 }

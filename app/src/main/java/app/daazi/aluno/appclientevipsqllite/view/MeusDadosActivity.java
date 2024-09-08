@@ -20,6 +20,7 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
 import app.daazi.aluno.appclientevipsqllite.controller.ClienteController;
+import app.daazi.aluno.appclientevipsqllite.controller.ClientePFController;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePF;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePJ;
@@ -32,6 +33,7 @@ public class MeusDadosActivity extends AppCompatActivity {
 
     Cliente cliente;
     ClienteController controller;
+    ClientePFController controllerPF;
 
     SharedPreferences preferences;
 
@@ -80,6 +82,7 @@ public class MeusDadosActivity extends AppCompatActivity {
         cliente.setId(clienteID);
 
         controller = new ClienteController(this);
+        controllerPF = new ClientePFController(this);
     }
 
     private void popularFormulario() {
@@ -87,6 +90,17 @@ public class MeusDadosActivity extends AppCompatActivity {
         if (clienteID>=1){
 
             cliente = controller.getClienteByID(cliente);
+            cliente.setClientePF(controllerPF.getClientePFByFK(cliente.getId()));
+
+            editPrimeiroNome.setText(cliente.getPrimeiroNome());
+            editSobrenome.setText(cliente.getSobreNome());
+            ckPessoaFisica.setChecked(cliente.isPessoaFisica());
+
+            editCpf.setText(cliente.getClientePF().getCpf());
+            editNomeCompleto.setText(cliente.getClientePF().getNomeCompleto());
+
+            editEmail.setText(cliente.getEmail());
+            editSenhaA.setText(cliente.getSenha());
 
         }else{
 
@@ -120,6 +134,7 @@ public class MeusDadosActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MeusDadosActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
 
     }
 }

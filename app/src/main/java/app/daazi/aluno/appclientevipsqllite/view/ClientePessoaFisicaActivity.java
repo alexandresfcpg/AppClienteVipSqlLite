@@ -167,7 +167,7 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
         isPessoaFisica = preferences.getBoolean("pessoaFisica", true);
-        clienteID = preferences.getInt("ultimoID", -1);
+        clienteID = preferences.getInt("clienteID", -1);
 
     }
 }

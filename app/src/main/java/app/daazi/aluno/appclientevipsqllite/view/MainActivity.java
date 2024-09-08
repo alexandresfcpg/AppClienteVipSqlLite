@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
         novoCliente02.setPrimeiroNome("Novo Cliente 02");
         clientes.add(novoCliente02);
 
-        for (Cliente obj: clientes ) {
+        for (Cliente obj : clientes) {
 
-            Log.i(AppUtil.LOG_APP,"Obj: "+obj.getPrimeiroNome());
-            
+            Log.i(AppUtil.LOG_APP, "Obj: " + obj.getPrimeiroNome());
+
         }
 
     }
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void atualizarMeusDados(View view) {
 
-        if(cliente.isPessoaFisica()){
+        if (cliente.isPessoaFisica()) {
 
             cliente.setPrimeiroNome("Alexandre Augusto");
             cliente.setSobreNome("da S. H. Ribeiro");
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(AppUtil.LOG_APP, "*** ALTERANDO DADOS CLIENTE PF ***");
             Log.i(AppUtil.LOG_APP, "Nome completo: " + clientePF.getNomeCompleto());
 
-        }else{
+        } else {
 
             clientePJ.setRazaoSocial("Alexandre ME");
 

@@ -83,12 +83,12 @@ public class AppDataBase extends SQLiteOpenHelper {
 
         try {
 
-            Log.i(AppUtil.LOG_APP, tabela + " insert() executado com sucesso.");
+            Log.i(AppUtil.LOG_APP, tabela+ " insert() executado com sucesso.");
             sucesso = db.insert(tabela, null, dados) > 0;
 
         } catch (SQLException e) {
 
-            Log.e(AppUtil.LOG_APP, tabela + " falhou ao executar o insert(): " + e.getMessage());
+            Log.e(AppUtil.LOG_APP, tabela+ " falhou ao executar o insert(): " +e.getMessage());
         }
 
         return sucesso;
@@ -138,7 +138,7 @@ public class AppDataBase extends SQLiteOpenHelper {
 
         Cliente cliente;
 
-        String sql = "SELECT * FROM " + tabela;
+        String sql = "SELECT * FROM " +tabela;
 
         try {
 
@@ -256,11 +256,11 @@ public class AppDataBase extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public int getLastPK(String tabela) {
 
-        String sql = "SELECT seq FROM sqlite_sequence WHERE name = '" + tabela + "'";
+        String sql = "SELECT seq FROM sqlite_sequence WHERE name = '" +tabela+ "'";
 
         try {
 
-            Log.e(AppUtil.LOG_APP, "SQL RAW: " + sql);
+            Log.e(AppUtil.LOG_APP, "SQL RAW: " +sql);
 
             cursor = db.rawQuery(sql, null);
 
@@ -274,8 +274,8 @@ public class AppDataBase extends SQLiteOpenHelper {
             }
 
         } catch (SQLException e) {
-            Log.e(AppUtil.LOG_APP, "Erro recuperando último PK: " + tabela);
-            Log.e(AppUtil.LOG_APP, "Erro: " + e.getMessage());
+            Log.e(AppUtil.LOG_APP, "Erro recuperando último PK: " +tabela);
+            Log.e(AppUtil.LOG_APP, "Erro: " +e.getMessage());
         }
 
         return -1;
@@ -286,7 +286,7 @@ public class AppDataBase extends SQLiteOpenHelper {
 
         Cliente cliente = new Cliente();
 
-        String sql = "SELECT * FROM "+tabela+"WHERE id = "+obj.getId();
+        String sql = "SELECT * FROM "+tabela+" WHERE id = "+obj.getId();
 
         try {
 
@@ -294,6 +294,7 @@ public class AppDataBase extends SQLiteOpenHelper {
 
             if (cursor.moveToNext()){
 
+                cliente.setId(cursor.getInt(cursor.getColumnIndex(ClienteDataModel.ID)));
                 cliente.setPrimeiroNome(cursor.getString(cursor.getColumnIndex(ClienteDataModel.PRIMEIRO_NOME)));
                 cliente.setSobreNome(cursor.getString(cursor.getColumnIndex(ClienteDataModel.SOBRENOME)));
                 cliente.setEmail(cursor.getString(cursor.getColumnIndex(ClienteDataModel.EMAIL)));
@@ -310,6 +311,35 @@ public class AppDataBase extends SQLiteOpenHelper {
         }
 
         return cliente;
+
+    }
+
+    @SuppressLint("Range")
+    public ClientePF getClientePFByFK(String tabela, int idFK){
+
+        ClientePF clientePF = new ClientePF();
+
+        String sql = "SELECT * FROM "+tabela+" WHERE clienteID = "+idFK;
+
+        try {
+
+            cursor = db.rawQuery(sql, null);
+
+            if (cursor.moveToNext()){
+
+                clientePF.setId(cursor.getInt(cursor.getColumnIndex(ClientePFDataModel.ID)));
+                clientePF.setNomeCompleto(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.NOME_COMPLETO)));
+                clientePF.setCpf(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.CPF)));
+            }
+
+        }catch (SQLException e){
+
+            Log.e(AppUtil.LOG_APP, "Erro getClientePFByFK "+idFK);
+            Log.e(AppUtil.LOG_APP, "Erro "+e.getMessage());
+
+        }
+
+        return clientePF;
 
     }
 }
