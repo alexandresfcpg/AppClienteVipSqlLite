@@ -91,5 +91,8 @@
     <!-- texto da tela de background gradiente -->
     <string name="txtTituloBackground">Aplicando Efeito\nBackground Gradiente</string>
 
+    <!-- tela atualizar meus dados -->
+    <string name="txtAtualizarMeusDados">Atualizar Meus Dados</string>
+
 
 </resources>

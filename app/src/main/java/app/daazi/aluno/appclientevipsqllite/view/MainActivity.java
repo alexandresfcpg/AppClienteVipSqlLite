@@ -127,30 +127,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void atualizarMeusDados(View view) {
 
-        if (cliente.isPessoaFisica()) {
-
-            cliente.setPrimeiroNome("Alexandre Augusto");
-            cliente.setSobreNome("da S. H. Ribeiro");
-
-            clientePF.setNomeCompleto("Alexandre Augusto da S. H. Ribeiro");
-
-            //salvarSharedPreferences();
-
-            Log.i(AppUtil.LOG_APP, "*** ALTERANDO DADOS CLIENTE ***");
-            Log.i(AppUtil.LOG_APP, "Primeiro nome: " + cliente.getPrimeiroNome());
-            Log.i(AppUtil.LOG_APP, "Sobrenome: " + cliente.getSobreNome());
-
-            Log.i(AppUtil.LOG_APP, "*** ALTERANDO DADOS CLIENTE PF ***");
-            Log.i(AppUtil.LOG_APP, "Nome completo: " + clientePF.getNomeCompleto());
-
-        } else {
-
-            clientePJ.setRazaoSocial("Alexandre ME");
-
-            Log.i(AppUtil.LOG_APP, "*** ALTERANDO DADOS CLIENTE PJ ***");
-            Log.i(AppUtil.LOG_APP, "Razão Social: " + clientePJ.getRazaoSocial());
-
-        }
+        Intent intent = new Intent(MainActivity.this, AtualizarMeusDadosActivity.class);
+        startActivity(intent);
 
     }
 
