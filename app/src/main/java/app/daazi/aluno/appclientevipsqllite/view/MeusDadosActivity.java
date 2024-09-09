@@ -21,6 +21,7 @@ import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
 import app.daazi.aluno.appclientevipsqllite.controller.ClienteController;
 import app.daazi.aluno.appclientevipsqllite.controller.ClientePFController;
+import app.daazi.aluno.appclientevipsqllite.controller.ClientePJController;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePF;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePJ;
@@ -34,11 +35,12 @@ public class MeusDadosActivity extends AppCompatActivity {
     Cliente cliente;
     ClienteController controller;
     ClientePFController controllerPF;
+    ClientePJController controllerPJ;
 
     SharedPreferences preferences;
 
     int clienteID;
-    boolean isPessoaFisica;
+    boolean isPessoaFisica, isSimplesNacional, isMei;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class MeusDadosActivity extends AppCompatActivity {
 
         controller = new ClienteController(this);
         controllerPF = new ClientePFController(this);
+        controllerPJ = new ClientePJController(this);
     }
 
     private void popularFormulario() {
@@ -92,13 +95,29 @@ public class MeusDadosActivity extends AppCompatActivity {
             cliente = controller.getClienteByID(cliente);
             cliente.setClientePF(controllerPF.getClientePFByFK(cliente.getId()));
 
+            if (!cliente.isPessoaFisica())
+                cliente.setClientePJ(controllerPJ.getClientePJByFK(cliente.getClientePF().getId()));
+
+            // Dados Classe Cliente
             editPrimeiroNome.setText(cliente.getPrimeiroNome());
             editSobrenome.setText(cliente.getSobreNome());
             ckPessoaFisica.setChecked(cliente.isPessoaFisica());
 
+            // Dados Classe ClientePF
             editCpf.setText(cliente.getClientePF().getCpf());
             editNomeCompleto.setText(cliente.getClientePF().getNomeCompleto());
 
+            // Dados Classe ClientePJ
+            if (!cliente.isPessoaFisica()) {
+
+                editCnpj.setText(cliente.getClientePJ().getCnpj());
+                editRazaoSocial.setText(cliente.getClientePJ().getRazaoSocial());
+                editDataAbertura.setText(cliente.getClientePJ().getDataAbertura());
+                ckSimplesNacional.setChecked(cliente.getClientePJ().isSimplesNacional());
+                ckMei.setChecked(cliente.getClientePJ().isMei());
+            }
+
+            // Dados Classe Credenciais do Cliente
             editEmail.setText(cliente.getEmail());
             editSenhaA.setText(cliente.getSenha());
 

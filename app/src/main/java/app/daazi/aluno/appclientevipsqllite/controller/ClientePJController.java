@@ -67,4 +67,10 @@ public class ClientePJController extends AppDataBase {
         return getLastPK(TABELA);
     }
 
+    public ClientePJ getClientePJByFK (int idFK){
+
+        return getClientePJByFK(ClientePJDataModel.TABELA, idFK);
+
+    }
+
 }
