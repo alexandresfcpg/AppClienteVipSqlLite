@@ -93,6 +93,8 @@
 
     <!-- tela atualizar meus dados -->
     <string name="txtAtualizarMeusDados">Atualizar Meus Dados</string>
+    <string name="btnEditar">EDITAR</string>
+    <string name="btnSalvar">SALVAR</string>
 
 
 </resources>

@@ -148,6 +148,39 @@
                         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
                         android:textStyle="bold" />
 
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/primaryColor"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnEditarCardCliente"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:onClick="editarCardCliente"
+                            android:text="@string/btnEditar"
+                            android:textStyle="bold"
+                            android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+                        <Button
+                            android:id="@+id/btnSalvarCardCliente"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/btnSalvar"
+                            android:enabled="false"
+                            android:textStyle="bold"
+                            android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -160,6 +193,93 @@
                 android:layout_margin="16dp"
                 app:cardCornerRadius="4dp"
                 app:cardElevation="8dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/primaryDarkColor"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtCpf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/txtCpf"
+                        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+                        android:textColor="@color/primaryTextColor"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editCpf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:enabled="false"
+                        android:hint="@string/txtHintCpf"
+                        android:inputType="text" />
+
+                    <TextView
+                        android:id="@+id/txtNomeCompleto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/txtNomeCompleto"
+                        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+                        android:textColor="@color/primaryTextColor"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editNomeCompleto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:enabled="false"
+                        android:hint="@string/txtHintNomeCompleto"
+                        android:inputType="text" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/primaryColor"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnEditarCardPF"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:onClick="editarCardPF"
+                            android:text="@string/btnEditar"
+                            android:textStyle="bold"
+                            android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+                        <Button
+                            android:id="@+id/btnSalvarCardPF"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/btnSalvar"
+                            android:enabled="false"
+                            android:textStyle="bold"
+                            android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.cardview.widget.CardView>
 
@@ -270,6 +390,39 @@
                         android:textColor="@color/primaryTextColor"
                         android:textStyle="bold" />
 
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/primaryColor"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnEditarCardPJ"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:onClick="editarCardPJ"
+                            android:text="@string/btnEditar"
+                            android:textStyle="bold"
+                            android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+                        <Button
+                            android:id="@+id/btnSalvarCardPJ"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/btnSalvar"
+                            android:enabled="false"
+                            android:textStyle="bold"
+                            android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -335,6 +488,39 @@
                         android:hint="@string/txtHintSenhaA"
                         android:inputType="numberPassword" />
 
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/primaryColor"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnEditarCredenciais"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:onClick="editarCardCredenciais"
+                            android:text="@string/btnEditar"
+                            android:textStyle="bold"
+                            android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+                        <Button
+                            android:id="@+id/btnSalvarCredenciais"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/btnSalvar"
+                            android:enabled="false"
+                            android:textStyle="bold"
+                            android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -377,61 +563,6 @@
 
 
             </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/primaryDarkColor"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txtCpf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="@string/txtCpf"
-                    android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
-                    android:textColor="@color/primaryTextColor"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editCpf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="16dp"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:hint="@string/txtHintCpf"
-                    android:inputType="text" />
-
-                <TextView
-                    android:id="@+id/txtNomeCompleto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="@string/txtNomeCompleto"
-                    android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
-                    android:textColor="@color/primaryTextColor"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editNomeCompleto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="16dp"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:hint="@string/txtHintNomeCompleto"
-                    android:inputType="text" />
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
