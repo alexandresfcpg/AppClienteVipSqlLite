@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,6 +19,7 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
 import app.daazi.aluno.appclientevipsqllite.controller.ClienteController;
+import app.daazi.aluno.appclientevipsqllite.datamodel.ClienteDataModel;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 
 public class CredencialDeAcessoActivity extends AppCompatActivity {
@@ -90,7 +92,7 @@ public class CredencialDeAcessoActivity extends AppCompatActivity {
                 } else {
 
                     cliente.setEmail(editEmail.getText().toString());
-                    cliente.setSenha(editSenhaA.getText().toString());
+                    cliente.setSenha(AppUtil.gerarMD5Hash(editSenhaA.getText().toString()));
 
                     controller.alterar(cliente);
 
@@ -147,7 +149,7 @@ public class CredencialDeAcessoActivity extends AppCompatActivity {
         SharedPreferences.Editor dados = preferences.edit();
 
         dados.putString("email", editEmail.getText().toString());
-        dados.putString("senha", editSenhaA.getText().toString());
+        dados.putString("senha", AppUtil.gerarMD5Hash(editSenhaA.getText().toString()));
         dados.apply();
 
     }
