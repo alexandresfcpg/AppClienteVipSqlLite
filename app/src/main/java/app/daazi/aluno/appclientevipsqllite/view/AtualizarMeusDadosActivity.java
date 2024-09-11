@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.shashank.sony.fancydialoglib.Animation;
 import com.shashank.sony.fancydialoglib.FancyAlertDialog;
@@ -175,24 +177,152 @@ public class AtualizarMeusDadosActivity extends AppCompatActivity {
 
         btnEditarCardCliente.setEnabled(false);
         btnSalvarCardCliente.setEnabled(true);
+
+        editPrimeiroNome.setEnabled(true);
+        editSobrenome.setEnabled(true);
+        ckPessoaFisica.setEnabled(true);
     }
+
+    public void salvarCardCliente(View view) {
+
+        if (validarFormularioCardCliente()){
+
+        }
+    }
+
+    private boolean validarFormularioCardCliente() {
+
+        boolean retorno = true;
+
+        if (TextUtils.isEmpty(editPrimeiroNome.getText().toString())) {
+            editPrimeiroNome.setError("*");
+            editPrimeiroNome.requestFocus();
+            retorno = false;
+        }
+
+        if (TextUtils.isEmpty(editSobrenome.getText().toString())) {
+            editSobrenome.setError("*");
+            editSobrenome.requestFocus();
+            retorno = false;
+        }
+
+        return retorno;
+    }
+
 
     public void editarCardPF(View view) {
 
         btnEditarCardPF.setEnabled(false);
         btnSalvarCardPF.setEnabled(true);
+
+        editCpf.setEnabled(true);
+        editNomeCompleto.setEnabled(true);
     }
+
+    public void salvarCardPF(View view) {
+
+        if (validarFormularioCardPF()){
+
+        }
+    }
+
+    private boolean validarFormularioCardPF() {
+
+        boolean retorno = true;
+
+        String cpf = editCpf.getText().toString();
+
+        if (TextUtils.isEmpty(cpf)) {
+            editCpf.setError("*");
+            editCpf.requestFocus();
+            retorno = false;
+        }
+
+        if (!AppUtil.isCPF(cpf)) {
+            editCpf.setError("*");
+            editCpf.requestFocus();
+            retorno = false;
+
+            Toast.makeText(this, "CPF inválido, tente novamente...", Toast.LENGTH_LONG).show();
+        }else{
+            editCpf.setText(AppUtil.mascaraCPF(editCpf.getText().toString()));
+        }
+
+        if (TextUtils.isEmpty(editNomeCompleto.getText().toString())) {
+            editNomeCompleto.setError("*");
+            editNomeCompleto.requestFocus();
+            retorno = false;
+        }
+
+        return retorno;
+    }
+
 
     public void editarCardPJ(View view) {
 
         btnEditarCardPJ.setEnabled(false);
         btnSalvarCardPJ.setEnabled(true);
+
+        editCnpj.setEnabled(true);
+        editRazaoSocial.setEnabled(true);
+        editDataAbertura.setEnabled(true);
+    }
+
+    public void salvarCardPJ(View view) {
+
+        if (validarFormularioCardPJ()){
+
+        }
+
+    }
+
+    private boolean validarFormularioCardPJ() {
+
+        boolean retorno = true;
+
+        String cnpj = editCnpj.getText().toString();
+
+        if (TextUtils.isEmpty(cnpj)) {
+            editCnpj.setError("*");
+            editCnpj.requestFocus();
+            retorno = false;
+        }
+
+        if (!AppUtil.isCNPJ(cnpj)) {
+            editCnpj.setError("*");
+            editCnpj.requestFocus();
+            retorno = false;
+
+            Toast.makeText(this, "CNPJ inválido, tente novamente...", Toast.LENGTH_LONG).show();
+        }else{
+            editCnpj.setText(AppUtil.mascaraCNPJ(editCnpj.getText().toString()));
+        }
+
+        if (TextUtils.isEmpty(editRazaoSocial.getText().toString())) {
+            editRazaoSocial.setError("*");
+            editRazaoSocial.requestFocus();
+            retorno = false;
+        }
+
+        if (TextUtils.isEmpty(editDataAbertura.getText().toString())) {
+            editDataAbertura.setError("*");
+            editDataAbertura.requestFocus();
+            retorno = false;
+        }
+
+        return retorno;
     }
 
     public void editarCardCredenciais(View view) {
 
         btnEditarCredenciais.setEnabled(false);
         btnSalvarCredenciais.setEnabled(true);
+
+        editEmail.setEnabled(true);
+        editSenhaA.setEnabled(true);
+    }
+
+    public void salvarCardCredenciais(View view) {
     }
 
     public void voltar(View view) {
