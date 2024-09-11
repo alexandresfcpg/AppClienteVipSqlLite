@@ -191,7 +191,16 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean validarDadosDoUsuario() {
 
-        return true;
+        boolean retorno = false;
+
+        String senhaDigitadaPura = editSenha.getText().toString();
+        String senhaMD5 = cliente.getSenha();
+
+        if (senhaMD5.equals(AppUtil.gerarMD5Hash(senhaDigitadaPura))){
+            retorno = true;
+        }
+
+        return retorno;
     }
 
     private void salvarSharedPreferences() {
