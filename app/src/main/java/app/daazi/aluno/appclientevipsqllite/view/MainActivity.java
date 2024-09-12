@@ -23,6 +23,8 @@ import java.util.List;
 import app.daazi.aluno.appclientevipsqllite.R;
 import app.daazi.aluno.appclientevipsqllite.api.AppUtil;
 import app.daazi.aluno.appclientevipsqllite.controller.ClienteController;
+import app.daazi.aluno.appclientevipsqllite.controller.ClientePFController;
+import app.daazi.aluno.appclientevipsqllite.controller.ClientePJController;
 import app.daazi.aluno.appclientevipsqllite.model.Cliente;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePF;
 import app.daazi.aluno.appclientevipsqllite.model.ClientePJ;
@@ -30,9 +32,9 @@ import app.daazi.aluno.appclientevipsqllite.model.ClientePJ;
 public class MainActivity extends AppCompatActivity {
 
     Cliente cliente;
-    ClientePF clientePF;
-    ClientePJ clientePJ;
     ClienteController controller;
+    ClientePFController controllerPF;
+    ClientePJController controllerPJ;
 
     TextView txtNomeCliente;
 
@@ -45,15 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cliente = new Cliente();
-
-        controller = new ClienteController(this);
-
-        controller.getClienteByID(cliente);
-
         initFormulario();
-
-        buscarListaDeClientes();
     }
 
     private void buscarListaDeClientes() {
@@ -80,8 +74,9 @@ public class MainActivity extends AppCompatActivity {
     private void initFormulario() {
 
         cliente = new Cliente();
-        clientePF = new ClientePF();
-        clientePJ = new ClientePJ();
+        controller = new ClienteController(this);
+        controllerPF = new ClientePFController(this);
+        controllerPJ = new ClientePJController(this);
 
         txtNomeCliente = findViewById(R.id.txtNomeCliente);
 
@@ -106,16 +101,7 @@ public class MainActivity extends AppCompatActivity {
         cliente.setEmail(preferences.getString("email", "NULO"));
         cliente.setSenha(preferences.getString("senha", "NULO"));
         cliente.setPessoaFisica(preferences.getBoolean("pessoaFisica", true));
-
-        clientePF.setCpf(preferences.getString("cpf", "NULO"));
-        clientePF.setNomeCompleto(preferences.getString("nomeCompleto", "NULO"));
-
-        clientePJ.setCnpj(preferences.getString("cnpj", "NULO"));
-        clientePJ.setRazaoSocial(preferences.getString("razaoSocial", "NULO"));
-        clientePJ.setDataAbertura(preferences.getString("dataAbertura", "NULO"));
-        clientePJ.setSimplesNacional(preferences.getBoolean("simplesNacional", false));
-        clientePJ.setMei(preferences.getBoolean("mei", false));
-
+        cliente.setId(preferences.getInt("clienteID", -1));
     }
 
     public void meusDados(View view) {
@@ -149,16 +135,21 @@ public class MainActivity extends AppCompatActivity {
                 .onPositiveClicked(new FancyAlertDialogListener() {
                     @Override
                     public void onClick(Dialog dialog) {
+
+                        cliente.setClientePF(controllerPF.getClientePFByFK(cliente.getId()));
+
+                        if (!cliente.isPessoaFisica()) {
+                            cliente.setClientePJ(controllerPJ.getClientePJByFK(cliente.getClientePF().getId()));
+                            controllerPJ.deletar(cliente.getClientePJ());
+                        }
+
+                        controllerPF.deletar(cliente.getClientePF());
+                        controller.deletar(cliente);
+
+
                         Toast.makeText(MainActivity.this, cliente.getPrimeiroNome() + " , a sua conta foi excluída!", Toast.LENGTH_SHORT).show();
 
-                        cliente = new Cliente();
-                        clientePF = new ClientePF();
-                        clientePJ = new ClientePJ();
 
-                        //salvarSharedPreferences();
-
-                        finish();
-                        return;
                     }
                 })
                 .onNegativeClicked(dialog -> Toast.makeText(MainActivity.this, cliente.getPrimeiroNome() + " , obrigado por continuar a usar o nosso aplicativo!", Toast.LENGTH_SHORT).show())
