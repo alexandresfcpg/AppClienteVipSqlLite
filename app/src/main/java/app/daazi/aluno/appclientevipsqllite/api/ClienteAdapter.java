@@ -31,6 +31,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+        // Monta o layout
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -44,6 +45,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        // Monta as informações linha por linha
         Cliente objDaLinha = aClientes.get(position);
         TextView txtPrimeiroNome = holder.rvPrimeiroNome;
         txtPrimeiroNome.setText(objDaLinha.getPrimeiroNome());
@@ -60,6 +62,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        // As informações que serão apresentadas na consulta
         public TextView rvPrimeiroNome;
         public Button rvPessoaFisica;
 
@@ -75,6 +78,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
         @Override
         public void onClick(View v) {
 
+            // Evento do clique do botão
             int position = getAdapterPosition();
 
             Cliente clienteSelecionado = aClientes.get(position);

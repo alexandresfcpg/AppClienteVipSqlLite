@@ -31,9 +31,9 @@ public class ConsultarClientesActivity extends AppCompatActivity {
 
         controller = new ClienteController(getApplicationContext());
 
-        //clientes = controller.listar();
+        clientes = controller.listar();
 
-        /*clientes = new ArrayList<>();
+        clientes = controller.listar();
 
         for (int i = 0; i < 50; i++){
 
@@ -43,7 +43,7 @@ public class ConsultarClientesActivity extends AppCompatActivity {
 
             clientes.add(obj);
 
-        }*/
+        }
 
         adapter = new ClienteAdapter(clientes, getApplicationContext());
 
