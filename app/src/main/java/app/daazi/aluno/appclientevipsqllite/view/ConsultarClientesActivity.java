@@ -35,16 +35,6 @@ public class ConsultarClientesActivity extends AppCompatActivity {
 
         clientes = controller.listar();
 
-        for (int i = 0; i < 50; i++){
-
-            obj = new Cliente();
-            obj.setPrimeiroNome("Cliente "+i);
-            obj.setPessoaFisica(i % 2==0);
-
-            clientes.add(obj);
-
-        }
-
         adapter = new ClienteAdapter(clientes, getApplicationContext());
 
         rvClientesVip.setAdapter(adapter);

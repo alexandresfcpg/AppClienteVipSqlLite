@@ -47,12 +47,20 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
 
         // Monta as informações linha por linha
         Cliente objDaLinha = aClientes.get(position);
+
         TextView txtPrimeiroNome = holder.rvPrimeiroNome;
         txtPrimeiroNome.setText(objDaLinha.getPrimeiroNome());
 
-        Button btnPessoaFisica = holder.rvPessoaFisica;
-        btnPessoaFisica.setText(objDaLinha.isPessoaFisica() ? "CPF" : "CNPJ");
+        TextView rvEmail = holder.rvEmail;
+        rvEmail.setText(objDaLinha.getEmail());
 
+        Button btnPessoaFisica = holder.rvPessoaFisica;
+
+        try {
+            btnPessoaFisica.setText(objDaLinha.isPessoaFisica() ? "CPF: " + objDaLinha.getClientePF().getCpf() : "CNPJ: " + objDaLinha.getClientePJ().getCnpj());
+        }catch (Exception e){
+            btnPessoaFisica.setText(objDaLinha.isPessoaFisica() ? "CPF" : "CNPJ");
+        }
     }
 
     @Override
@@ -63,13 +71,15 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         // As informações que serão apresentadas na consulta
-        public TextView rvPrimeiroNome;
+        public TextView rvPrimeiroNome, rvEmail;
         public Button rvPessoaFisica;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             rvPrimeiroNome = itemView.findViewById(R.id.rvPrimeiroNome);
+            rvEmail = itemView.findViewById(R.id.rvEmail);
             rvPessoaFisica = itemView.findViewById(R.id.rvPessoaFisica);
 
             itemView.setOnClickListener(this);

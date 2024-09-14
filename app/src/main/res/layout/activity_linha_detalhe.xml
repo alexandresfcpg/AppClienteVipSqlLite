@@ -5,29 +5,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
+    <!-- Formulário -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:cardCornerRadius="4dp"
-        app:cardElevation="16dp">
+        app:cardElevation="8dp">
 
-    <TextView
-        android:id="@+id/rvPrimeiroNome"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:text="@string/txtCliente"
-        android:layout_margin="16dp"
-        android:textColor="@color/colorPrimary" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/primaryDarkColor"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/rvPessoaFisica"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:text="teste"
-        android:paddingRight="16dp"
-        android:textSize="14sp" />
+            <TextView
+                android:id="@+id/rvPrimeiroNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+                android:textColor="@color/primaryTextColor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/rvPessoaFisica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/btnSalvarContinuar"
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.cardview.widget.CardView>
 
